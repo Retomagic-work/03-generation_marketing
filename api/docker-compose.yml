@@ -15,7 +15,7 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - 3000:${PORT}
+      - 8889:${PORT}
     depends_on:
       - postgres
       - minio
