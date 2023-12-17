@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   app:
-    container_name: rtm-core-config_app
+    container_name: rtm-core-config_app2
     build:
       dockerfile: Dockerfile
       context: .
@@ -15,17 +15,17 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - 8888:${PORT}
+      - 3000:${PORT}
     depends_on:
       - postgres
       - minio
       - rabbitmq
   pgadmin:
-    container_name: rtm-core-config_pgadmin
+    container_name: rtm-core-config_pgadmin2
     image: dpage/pgadmin4
     restart: always
     ports:
-      - "5050:80"
+      - "5055:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
@@ -34,12 +34,12 @@ services:
     depends_on:
       - postgres
   minio:
-    container_name: rtm-core-config_minio
+    container_name: rtm-core-config_minio2
     image: minio/minio:latest
     command: server --console-address ":9001" /data/
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "9003:9000"
+      - "9004:9001"
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
@@ -51,7 +51,7 @@ services:
       timeout: 20s
       retries: 3
   rabbitmq:
-    container_name: rtm-core-config_rabbitmq
+    container_name: rtm-core-config_rabbitmq2
     image: rabbitmq:3-management
     hostname: rabbitmq
     restart: always
@@ -59,12 +59,12 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - "15673:15672"
+      - "5673:5672"
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
   postgres:
-    container_name: rtm-core-config_postgres
+    container_name: rtm-core-config_postgres2
     image: postgres
     restart: always
     environment:
@@ -72,7 +72,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - '5433:5432'
+      - '5434:5432'
     volumes:
       - pg-data:/var/lib/postgresql/data
 volumes:

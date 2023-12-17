@@ -6,49 +6,46 @@ $ docker compose up --build
 ```
 
 ## Env configuration
-File configuration - [.env](.env)
-```dotenv
-# App Settings
-PORT=3000
-SERVER_ADDRESS=http://127.0.0.1/
-#! Change it to the public address of the server
 
-# Database Settings
+Copy `.env.example` to `.env`
+```dotenv
+PORT=3000
+SERVER_ADDRESS=http://46.243.226.156:3000/
+
 POSTGRES_DB=rtm-core-config
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=rXUDAiKyoiE3XYFz74qC
 
-# Database management Settings
 PGADMIN_DEFAULT_EMAIL=admin@retomagic.com
 PGADMIN_DEFAULT_PASSWORD=rXUDAiKyoiE3XYFz74qC
 
-# File storage Settings
 MINIO_ROOT_USER=root
 MINIO_ROOT_PASSWORD=rXUDAiKyoiE3XYFz74qC
 
-# Distributed message broker Settings
 RABBITMQ_DEFAULT_USER=admin@retomagic.com
 RABBITMQ_DEFAULT_PASS=rXUDAiKyoiE3XYFz74qC
+
+JWT_SECRET_KEY=secret
 ```
 
 ## Links
-* `${SERVER_ADDRESS}/` - API server ([API docs](docs/requests.md))
-* `${SERVER_ADDRESS}:5050/` - Database management web interface
-* `${SERVER_ADDRESS}:9001/` - File storage web interface
-* `${SERVER_ADDRESS}:15672/` - Distributed message broker web interface
+* `${SERVER_ADDRESS}:3000/` - API server
+* `${SERVER_ADDRESS}:5055/` - Database management web interface
+* `${SERVER_ADDRESS}:9003/` - File storage web interface
+* `${SERVER_ADDRESS}:15673/` - Distributed message broker web interface
 
 ## Containers
 ### `app` - NodeJs server
-Listening on port `80`
+Listening on port `3000`
 
 ### `postgres` - Database
-Listening on port `5432`
+Listening on port `5434`
 
 ### `pgadmin` - Database management
-Listening on `5050`
+Listening on `5055`
 
 ### `minio` - File storage
-Listening on port `9000` and `9001`
+Listening on port `9003` and `9004`
 
 ### `rabbitmq` - Message broker
-Listening on port `15672` and `5672`
+Listening on port `15673` and `5673`
