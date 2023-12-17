@@ -10,7 +10,7 @@ if (!botToken) {
 const bot = new Telegraf(botToken);
 
 bot.start(ctx => {
-    ctx.reply('Привет! Я Умный цифровой помощник Главы администрации города Мирный!');
+    ctx.reply('Привет! Напишите свой запрос.');
 });
 
 bot.on('text', handleTextMessage);
