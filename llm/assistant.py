@@ -27,7 +27,7 @@ class DigitalAssistant:
         return response_text_ru
     
     @staticmethod
-    def replace_text(text):  
+    def replace_text(response_text_ru):  
         replacements = {  
             " ПК ": "Классический потребительский кредит-это деньги, выданные банком заемщику на цели, не связанные с предпринимательством.",  
             " TOPUP ": "Рефинансирование внутреннего ПК в Газпромбанке- перезаключение кредитного договора  в Газпромбанке на лучших условиях.",  
